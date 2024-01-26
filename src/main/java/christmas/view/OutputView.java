@@ -1,8 +1,8 @@
 package christmas.view;
 
-import christmas.model.menu.Menu;
-import christmas.model.order.MenuCount;
-import christmas.model.promotion.Promotion;
+import christmas.domain.menu.Menu;
+import christmas.domain.order.MenuCount;
+import christmas.domain.promotion.Promotion;
 import christmas.view.dto.ReceiptResponseDto;
 import java.util.EnumMap;
 
@@ -35,7 +35,7 @@ public class OutputView {
 
         showOrders(responseDto.orders());
         showTotalAmountBeforeDiscount(responseDto.totalAmountBeforeDiscount());
-        showFreebies(responseDto.freebies());
+        showGifts(responseDto.gifts());
         showBenefits(responseDto.benefitRecords());
         showTotalBenefitAmount(responseDto.totalBenefitAmount());
         showEstimatedPaymentAmount(responseDto.estimatedPaymentAmount());
@@ -56,12 +56,11 @@ public class OutputView {
         System.out.printf(OUTPUT_AMOUNT_FORMAT, amount);
     }
 
-    private void showFreebies(EnumMap<Menu, Integer> freebies) {
+    private void showGifts(EnumMap<Menu, Integer> gifts) {
         System.out.println("\n<증정 메뉴>");
-        freebies.forEach((menu, count) -> System.out.printf(OUTPUT_ITEM_QUANTITY_FORMAT, menu.getKorean(), count));
+        gifts.forEach((menu, count) -> System.out.printf(OUTPUT_ITEM_QUANTITY_FORMAT, menu.getKorean(), count));
 
-        // TODO : 검증 로직 옮기기
-        if (freebies.isEmpty()) {
+        if (gifts.isEmpty()) {
             System.out.println(OUTPUT_NONE);
         }
     }
@@ -72,7 +71,6 @@ public class OutputView {
                 (promotion, amount) -> System.out.printf(OUTPUT_PROMOTION_DETAIL_FORMAT,
                         promotion.getDescription(), amount.intValue()));
 
-        // TODO : 검증 로직 옮기기
         if (benefitRecords.isEmpty()) {
             System.out.println(OUTPUT_NONE);
         }

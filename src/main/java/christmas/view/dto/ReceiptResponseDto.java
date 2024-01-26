@@ -1,17 +1,16 @@
 package christmas.view.dto;
 
-import christmas.model.menu.Menu;
-import christmas.model.order.MenuCount;
-import christmas.model.promotion.Promotion;
+import christmas.domain.menu.Menu;
+import christmas.domain.order.MenuCount;
+import christmas.domain.promotion.Promotion;
 import java.util.EnumMap;
 
-// TODO: 자료형으로 그대로 넣는게 맞나?
 public record ReceiptResponseDto(
         int visitMonth,
         int visitDay,
         EnumMap<Menu, MenuCount> orders,
         int totalAmountBeforeDiscount,
-        EnumMap<Menu, Integer> freebies,
+        EnumMap<Menu, Integer> gifts,
         EnumMap<Promotion, Double> benefitRecords,
         int totalBenefitAmount,
         int estimatedPaymentAmount,

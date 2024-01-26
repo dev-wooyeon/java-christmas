@@ -1,8 +1,8 @@
 package christmas.util.mapper;
 
-import christmas.model.order.Order;
-import christmas.model.order.VisitDate;
-import christmas.model.reciept.Receipt;
+import christmas.domain.order.Order;
+import christmas.domain.order.VisitDate;
+import christmas.domain.reciept.Receipt;
 import christmas.util.converter.StringConverter;
 import christmas.view.dto.OrderRequestDto;
 import christmas.view.dto.ReceiptResponseDto;
@@ -24,7 +24,7 @@ public class DtoModelMapper {
                 visitDate.getDay(),
                 receipt.getOrders(),
                 (int) receipt.getTotalOrderAmount(),
-                receipt.getFreebies(),
+                receipt.getGifts(),
                 receipt.getBenefitRecords(),
                 (int) receipt.getTotalBenefitAmount(),
                 (int) receipt.getEstimatedPaymentAmount(),
